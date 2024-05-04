@@ -24,7 +24,7 @@
         <activity android:name=".ui.GameActivity"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.GameActivity"/>
+                <action android:name="ABRA_GAME_ACTIVITY"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
