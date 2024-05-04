@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.GameActivity">
 
     <include
         android:id="@+id/toolbarIn"
@@ -26,6 +26,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbarIn"/>
 
     <LinearLayout
+        android:id="@+id/LL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -56,4 +57,19 @@
             android:layout_weight="1"
             android:src="@drawable/tesoura" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/jogarBt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jogar"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LL" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
