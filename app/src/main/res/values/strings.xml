@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pedra, Papel e Tesoura</string>
+    <string name="umvum">1 vs 1</string>
+    <string name="umvdois">1 v 1 v 1</string>
 </resources>

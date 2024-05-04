@@ -11,11 +11,23 @@ class GameActivity : AppCompatActivity() {
     private val agb: ActivityGameBinding by lazy {
         ActivityGameBinding.inflate(layoutInflater)
     }
+    private var numeroJogadores: Int = 0
     private var mao: JogadasMao? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(agb.root)
+
+        val numeroJogadores = intent.getIntExtra("numeroJogadores", 2)
+
+        when (numeroJogadores) {
+            2 -> iniciarJogo1v1()
+            //3 -> iniciarJogo1v1v1()
+        }
+
+    }
+
+    private fun iniciarJogo1v1() {
         setupUI()
     }
 
@@ -39,35 +51,32 @@ class GameActivity : AppCompatActivity() {
         }
 
         agb.jogarBt.setOnClickListener {
-            mao?.let { maoUsuario ->
-                val maoAplicativo = jogadaAplicativo()
-                exibirResultado(dueloJokenpo(maoUsuario, maoAplicativo), maoAplicativo)
-            } ?: run {
-                Toast.makeText(this, "Selecione uma jogada antes de jogar!", Toast.LENGTH_SHORT).show()
-            }
+            val aplicativo1 = jogadaBot()
+            mao?.let { it1 -> dueloJokenpo(it1, aplicativo1) }
         }
     }
 
-    private fun dueloJokenpo(maoUsuario: JogadasMao, maoAplicativo: JogadasMao): String {
-        return when {
-            maoUsuario == maoAplicativo -> "empate"
-            maoUsuario == JogadasMao.PEDRA && maoAplicativo == JogadasMao.TESOURA ||
-            maoUsuario == JogadasMao.PAPEL && maoAplicativo == JogadasMao.PEDRA ||
-            maoUsuario == JogadasMao.TESOURA && maoAplicativo == JogadasMao.PAPEL -> "vitoria"
-            else -> "derrota"
-        }
-    }
-
-    private fun jogadaAplicativo(): JogadasMao {
-        val maos = JogadasMao.values()
+    private fun jogadaBot(): JogadasMao {
+        val maos = JogadasMao.entries
         return maos.random()
     }
+    private fun dueloJokenpo(maoUsuario: JogadasMao, maoBot: JogadasMao): Any {
+        return when {
+            maoUsuario == maoBot -> exibirResultado("empate", maoBot)
+            maoUsuario == JogadasMao.PEDRA && maoBot == JogadasMao.TESOURA ||
+            maoUsuario == JogadasMao.PAPEL && maoBot == JogadasMao.PEDRA ||
+            maoUsuario == JogadasMao.TESOURA && maoBot == JogadasMao.PAPEL -> exibirResultado("vitória", maoBot)
+            else -> exibirResultado("derrota", maoBot)
+        }
+    }
 
-    private fun exibirResultado(resultado: String, maoAplicativo: JogadasMao) {
+
+    private fun exibirResultado(resultado: String, maoBot: JogadasMao) {
         val mensagem = when (resultado) {
-            "empate" -> "O jogo terminou empatado, o adversário também escolheu ${maoAplicativo.name}"
-            "vitoria" -> "Você venceu, o adversário escolheu ${maoAplicativo.name}"
-            else -> "Você perdeu, o adversário escolheu ${maoAplicativo.name}"
+            "empate" -> "O jogo terminou empatado, o adversário também escolheu ${maoBot.name}"
+            "vitoria" -> "Você venceu, o adversário escolheu ${maoBot.name}"
+            "derrota" -> "Você perdeu, o adversário escolheu ${maoBot.name}"
+            else -> "Resultado indeterminado"
         }
         Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show()
     }
