@@ -37,21 +37,21 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/imgStone"
+            android:id="@+id/imgPedra"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
             android:src="@drawable/pedra" />
 
         <ImageView
-            android:id="@+id/imgPaper"
+            android:id="@+id/imgPapel"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
             android:src="@drawable/papel" />
 
         <ImageView
-            android:id="@+id/imgScizor"
+            android:id="@+id/imgTesoura"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_weight="1"
@@ -65,11 +65,59 @@
         android:text="Jogar"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintVertical_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/LL" />
+
+    <TextView
+        android:id="@+id/botTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Bot escolheu:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LL" />
+
+    <ImageView
+        android:id="@+id/imgBot"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:src="@drawable/tesoura"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/botTv" />
+
+    <TextView
+        android:id="@+id/botTv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Bot 2 escolheu:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgBot" />
+    <ImageView
+        android:id="@+id/imgBot2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:src="@drawable/tesoura"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/botTv2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
